@@ -61,14 +61,20 @@ namespace Aquarium
 		}
 
 		//private Fish fishy;
+
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			timer1.Enabled = true;
 			//fishy = new Fish(new PointF(15, titleLabel.Bottom + 5), this, 4F, (float)1.4, Properties.Resources.fishOrange1);
 		}
 
+		private PointF endpoint1 = new PointF(30, 30), endpoint2 = new PointF(100, 100);
+		private float rotation = (float)Math.PI;
 		private void Form1_Paint(object sender, PaintEventArgs e)
 		{
+			PointF rotatedPoint = Fish.RotatePoint(endpoint2, endpoint1, rotation);
+			e.Graphics.DrawLine(Pens.Blue, endpoint1, rotatedPoint);
+
 			for (int i = 0; i < school.Length; i++)
 			{
 				school[i].DrawImage(e);
@@ -122,5 +128,5 @@ namespace Aquarium
 			get { return panel1.Bottom; }
 		}
 	}
-	
+
 }

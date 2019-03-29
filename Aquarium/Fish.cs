@@ -32,7 +32,6 @@ namespace Aquarium
 			this.drawScale = drawScale;
 			this.fishImage = fishImage;
 			target = position;
-			//fishImage.RotateFlip(RotateFlipType.RotateNoneFlipX);
 		}
 
 		public void Update()
@@ -54,36 +53,13 @@ namespace Aquarium
 
 			position.X += (float)(Math.Cos(angleToTarget) * deltaPos);
 			position.Y += (float)(Math.Sin(angleToTarget) * deltaPos);
-
-			
 		}
 
 		private PointF FindTarget()
 		{
 			if (target == position)
 			{
-				//float previousX = target.X;
 				PointF temp = new PointF(random.Next(0, parentForm.Width), random.Next(parentForm.namePanelBottom, parentForm.Height));
-				//float deltaX = target.X - position.X;
-				//float deltaY = target.Y - position.Y;
-				//bool direction = false;
-
-				//if (previousX > temp.X)
-				//{
-				//	direction = true;
-				//}
-				//else if (previousX < temp.X)
-				//{
-				//	direction = false;
-				//}
-				//if (previousX > temp.X && direction == true)
-				//{
-				//	fishImage.RotateFlip(RotateFlipType.RotateNoneFlipX);
-				//}
-				//else if (previousX < temp.X && direction == false)
-				//{
-				//	fishImage.RotateFlip(RotateFlipType.RotateNoneFlipX);
-				//}
 				return temp;
 			}
 			else
@@ -106,14 +82,57 @@ namespace Aquarium
 
 		public void DrawImage(PaintEventArgs e)
 		{
+			//float rotationValue = 
+			e.Graphics.DrawImage(fishImage, GetDrawPoints(target.X > position.X));
+			//PointF[] drawPoints = GetDrawPoints(false);
+			//drawPoints[0].X = 200;
+			//drawPoints[0].Y = 200;
+			//e.Graphics.DrawLine(Pens.Blue, drawPoints[1], drawPoints[2]);
+		}
+
+		private PointF[] GetDrawPoints(bool isFlipped)
+		{
 			float fishImageWidth = fishImage.Width * drawScale;
 			float fishImageHeight = fishImage.Height * drawScale;
 
-			float centerX = position.X - (fishImageWidth / 2);
-			float centerY = position.Y - (fishImageHeight / 2);
+			PointF[] drawPoints = new PointF[3];
 
-			//e.Graphics.DrawImage(fishImage, centerX, centerY, fishImageWidth, fishImageHeight);
-			e.Graphics.DrawImage(fishImage, centerX, centerY, fishImageWidth, fishImageHeight);
+			float deltaX = target.X - position.X;
+			float deltaY = target.Y - position.Y;
+
+			if (isFlipped)
+			{
+				drawPoints[0] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
+				drawPoints[1] = new PointF(position.X - (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
+				drawPoints[2] = new PointF(position.X + (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+			}
+			else
+			{
+				drawPoints[0] = new PointF(position.X - (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
+				drawPoints[1] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
+				drawPoints[2] = new PointF(position.X - (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+			}
+			//float rotation = -(float)Math.PI/3;
+			float rotation = -(float)Math.Atan2(deltaY, deltaX);
+			drawPoints[1] = RotatePoint(drawPoints[1], position, rotation);
+			drawPoints[2] = RotatePoint(drawPoints[2], position, rotation);
+			return drawPoints;
+		}
+
+		public static PointF RotatePoint(PointF originalPoint, PointF axis, float rotation)
+		{
+			PointF relativePoint = new PointF(originalPoint.X - axis.X, originalPoint.Y - axis.Y);
+			PointF rotatedPoint = new PointF(0, 0);
+
+			//Rotate
+			rotatedPoint.X = (float)((relativePoint.X * Math.Cos(rotation)) - (relativePoint.Y * Math.Sin(rotation)));
+			rotatedPoint.Y = (float)((relativePoint.X * Math.Sin(rotation)) + (relativePoint.Y * Math.Cos(rotation)));
+
+			//Recentering
+			rotatedPoint.X += axis.X;
+			rotatedPoint.Y += axis.Y;
+
+			return rotatedPoint;
 		}
 		//private int x, y;
 		////private int destinationX, destinationY;
