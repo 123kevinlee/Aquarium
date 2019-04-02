@@ -18,6 +18,7 @@ namespace Aquarium
 		private Image fishImage;
 		private float drawScale;
 		public Random random = new Random();
+		public float roat;
 
 		public PointF GetPosition
 		{
@@ -99,23 +100,40 @@ namespace Aquarium
 
 			float deltaX = target.X - position.X;
 			float deltaY = target.Y - position.Y;
+			float rotation = (float)Math.Atan2(deltaY, deltaX);
+			roat = rotation;
 
 			if (isFlipped)
 			{
 				drawPoints[0] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
 				drawPoints[1] = new PointF(position.X - (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
 				drawPoints[2] = new PointF(position.X + (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+
+				drawPoints[0] = RotatePoint(drawPoints[0], position, rotation);
+				drawPoints[1] = RotatePoint(drawPoints[1], position, rotation);
+				drawPoints[2] = RotatePoint(drawPoints[2], position, rotation);
 			}
 			else
 			{
 				drawPoints[0] = new PointF(position.X - (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
 				drawPoints[1] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
 				drawPoints[2] = new PointF(position.X - (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+
+				drawPoints[0] = RotatePoint(drawPoints[0], position, rotation);
+				drawPoints[1] = RotatePoint(drawPoints[1], position, rotation);
+				drawPoints[2] = RotatePoint(drawPoints[2], position, rotation);
 			}
-			//float rotation = -(float)Math.PI/3;
-			float rotation = -(float)Math.Atan2(deltaY, deltaX);
-			drawPoints[1] = RotatePoint(drawPoints[1], position, rotation);
-			drawPoints[2] = RotatePoint(drawPoints[2], position, rotation);
+			//if (rotation > Math.PI / 2 && rotation < 3*(Math.PI/2) || rotation < -Math.PI / 2 && rotation > -3 * (Math.PI / 2))
+			//{
+			//	//PointF[] flipPoints = new PointF[3];
+			//	//flipPoints[0] = drawPoints[1];
+			//	//flipPoints[1] = drawPoints[0];
+			//	//flipPoints[2] = new PointF(drawPoints[1].X, drawPoints[2].Y);
+			//	//return flipPoints;
+				
+			//}
+			//}
+			
 			return drawPoints;
 		}
 

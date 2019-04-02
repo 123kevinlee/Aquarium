@@ -93,8 +93,10 @@ namespace Aquarium
 			{
 				school[i].Update();
 				Invalidate();
+				fishNumber_Label.Text = school[0].roat.ToString();
 			}
 
+			
 			//foreach (Fish fishy in school)
 			//{
 			//	fishy.Update();
