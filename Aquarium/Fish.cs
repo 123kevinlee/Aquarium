@@ -83,12 +83,7 @@ namespace Aquarium
 
 		public void DrawImage(PaintEventArgs e)
 		{
-			//float rotationValue = 
 			e.Graphics.DrawImage(fishImage, GetDrawPoints(target.X > position.X));
-			//PointF[] drawPoints = GetDrawPoints(false);
-			//drawPoints[0].X = 200;
-			//drawPoints[0].Y = 200;
-			//e.Graphics.DrawLine(Pens.Blue, drawPoints[1], drawPoints[2]);
 		}
 
 		private PointF[] GetDrawPoints(bool isFlipped)
@@ -123,17 +118,17 @@ namespace Aquarium
 				drawPoints[1] = RotatePoint(drawPoints[1], position, rotation);
 				drawPoints[2] = RotatePoint(drawPoints[2], position, rotation);
 			}
-			//if (rotation > Math.PI / 2 && rotation < 3*(Math.PI/2) || rotation < -Math.PI / 2 && rotation > -3 * (Math.PI / 2))
+			//if (rotation > Math.PI / 2 || rotation < -Math.PI / 2 )
 			//{
-			//	//PointF[] flipPoints = new PointF[3];
-			//	//flipPoints[0] = drawPoints[1];
-			//	//flipPoints[1] = drawPoints[0];
-			//	//flipPoints[2] = new PointF(drawPoints[1].X, drawPoints[2].Y);
-			//	//return flipPoints;
-				
+			//	PointF[] flipPoints = new PointF[3];
+			//	flipPoints[0] = drawPoints[1];
+			//	flipPoints[1] = drawPoints[0];
+			//	flipPoints[2] = new PointF(flipPoints[0].X, drawPoints[2].Y);
+			//	return flipPoints;
 			//}
 			//}
-			
+			//}
+
 			return drawPoints;
 		}
 
