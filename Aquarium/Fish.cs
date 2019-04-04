@@ -19,6 +19,7 @@ namespace Aquarium
 		private float drawScale;
 		public Random random = new Random();
 		public float roat;
+		private int hunger = 500;
 
 		public PointF GetPosition
 		{
@@ -42,6 +43,8 @@ namespace Aquarium
 
 			//Update position
 			ChangePosition();
+
+			hunger--;
 		}
 
 		private void ChangePosition()
@@ -100,6 +103,8 @@ namespace Aquarium
 
 			if (isFlipped)
 			{
+				//right
+				rotation += (float)Math.PI * 2;
 				drawPoints[0] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
 				drawPoints[1] = new PointF(position.X - (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
 				drawPoints[2] = new PointF(position.X + (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
@@ -110,25 +115,15 @@ namespace Aquarium
 			}
 			else
 			{
-				drawPoints[0] = new PointF(position.X - (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
-				drawPoints[1] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
-				drawPoints[2] = new PointF(position.X - (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+				//left
+				drawPoints[0] = new PointF(position.X + (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+				drawPoints[1] = new PointF(position.X - (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+				drawPoints[2] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
 
 				drawPoints[0] = RotatePoint(drawPoints[0], position, rotation);
 				drawPoints[1] = RotatePoint(drawPoints[1], position, rotation);
 				drawPoints[2] = RotatePoint(drawPoints[2], position, rotation);
 			}
-			//if (rotation > Math.PI / 2 || rotation < -Math.PI / 2 )
-			//{
-			//	PointF[] flipPoints = new PointF[3];
-			//	flipPoints[0] = drawPoints[1];
-			//	flipPoints[1] = drawPoints[0];
-			//	flipPoints[2] = new PointF(flipPoints[0].X, drawPoints[2].Y);
-			//	return flipPoints;
-			//}
-			//}
-			//}
-
 			return drawPoints;
 		}
 

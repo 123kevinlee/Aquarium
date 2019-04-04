@@ -19,6 +19,7 @@ namespace Aquarium
 		}
 
 		private Fish[] school = new Fish[0];
+		private Food[] foodies = new Food[0];
 		#region MakeDraggable
 		private bool mouseDown;
 		private Point lastLocation;
@@ -68,18 +69,17 @@ namespace Aquarium
 			//fishy = new Fish(new PointF(15, titleLabel.Bottom + 5), this, 4F, (float)1.4, Properties.Resources.fishOrange1);
 		}
 
-		private PointF endpoint1 = new PointF(30, 30), endpoint2 = new PointF(100, 100);
-		private float rotation = (float)Math.PI;
 		private void Form1_Paint(object sender, PaintEventArgs e)
 		{
-			PointF rotatedPoint = Fish.RotatePoint(endpoint2, endpoint1, rotation);
-			e.Graphics.DrawLine(Pens.Blue, endpoint1, rotatedPoint);
-
 			for (int i = 0; i < school.Length; i++)
 			{
 				school[i].DrawImage(e);
 			}
 
+			for (int i = 0; i < foodies.Length; i++)
+			{
+				foodies[i].Draw(e);
+			}
 			//foreach example
 			//foreach (Fish fish in school)
 			//{
@@ -89,14 +89,20 @@ namespace Aquarium
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			//check to see there are fish in the school
+			
 			for (int i = 0; i < school.Length; i++)
 			{
 				school[i].Update();
 				Invalidate();
-				fishNumber_Label.Text = school[0].roat.ToString();
 			}
 
-			
+			for (int i = 0; i < foodies.Length; i++)
+			{
+				foodies[i].Update();
+				Invalidate();
+			}
+
+
 			//foreach (Fish fishy in school)
 			//{
 			//	fishy.Update();
@@ -109,6 +115,12 @@ namespace Aquarium
 		{
 			Array.Resize(ref school, school.Length + 1);
 			school[school.Length - 1] = fish;
+		}
+
+		public void AddFood(Food foodPiece)
+		{
+			Array.Resize(ref foodies, foodies.Length + 1);
+			foodies[foodies.Length - 1] = foodPiece;
 		}
 
 		//X Button
@@ -128,6 +140,11 @@ namespace Aquarium
 		public int namePanelBottom
 		{
 			get { return panel1.Bottom; }
+		}
+
+		private void feed_Button_Click(object sender, EventArgs e)
+		{
+			AddFood(new Food(new PointF(15, titleLabel.Bottom + 5), this, 2F, 10));
 		}
 	}
 
