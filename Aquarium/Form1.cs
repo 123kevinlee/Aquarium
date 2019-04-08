@@ -93,6 +93,10 @@ namespace Aquarium
 			for (int i = 0; i < school.Length; i++)
 			{
 				school[i].Update();
+				if (school[i].hunger == 0)
+				{
+					RemoveFish(i);
+				}
 				Invalidate();
 			}
 
@@ -117,12 +121,38 @@ namespace Aquarium
 			school[school.Length - 1] = fish;
 		}
 
+		public void RemoveFish(int index)
+		{
+			fishSwap(ref school[index], ref school[school.Length - 1]);
+			Array.Resize(ref school, school.Length - 1);
+			fishNumber_Label.Text = $"Fishes: {school.Length}";
+		}
+
+		public void fishSwap(ref Fish x, ref Fish y)
+		{
+			Fish temp = x;
+			x = y;
+			y = temp;
+		}
+
 		public void AddFood(Food foodPiece)
 		{
 			Array.Resize(ref foodies, foodies.Length + 1);
 			foodies[foodies.Length - 1] = foodPiece;
 		}
 
+		public void RemoveFood(int index)
+		{
+			foodSwap(ref foodies[index], ref foodies[foodies.Length - 1]);
+			Array.Resize(ref foodies, foodies.Length - 1);
+		}
+
+		public void foodSwap(ref Food x, ref Food y)
+		{
+			Food temp = x;
+			x = y;
+			y = temp;
+		}
 		//X Button
 		private void pictureBox1_Click(object sender, EventArgs e)
 		{
@@ -145,6 +175,11 @@ namespace Aquarium
 		private void feed_Button_Click(object sender, EventArgs e)
 		{
 			AddFood(new Food(new PointF(15, titleLabel.Bottom + 5), this, 2F, 10));
+		}
+
+		public Food[] foodArray
+		{
+			get { return foodies; }
 		}
 	}
 

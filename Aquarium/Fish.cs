@@ -19,7 +19,9 @@ namespace Aquarium
 		private float drawScale;
 		public Random random = new Random();
 		public float roat;
-		private int hunger = 500;
+		public int hunger = 3000; //50 = about 1 seconds
+		private bool trackingFood = false;
+		private int closestFood = 0;
 
 		public PointF GetPosition
 		{
@@ -44,6 +46,8 @@ namespace Aquarium
 			//Update position
 			ChangePosition();
 
+			Eat();
+
 			hunger--;
 		}
 
@@ -61,14 +65,53 @@ namespace Aquarium
 
 		private PointF FindTarget()
 		{
-			if (target == position)
+			Food[] foodies = parentForm.foodArray;
+			//Checks if there is food
+			if (foodies.Length > 0)
 			{
-				PointF temp = new PointF(random.Next(0, parentForm.Width), random.Next(parentForm.namePanelBottom, parentForm.Height));
-				return temp;
+				trackingFood = true;
+				//Sorts from closest to farthest
+				closestFood = 0;
+				float closestDistance = 100000000000000; //Really large number :joy:
+				for (int i = 0; i < foodies.Length; i++)
+				{
+					float tempDistance = GetDistance(this.position, foodies[i].GetPosition);
+					if (tempDistance < closestDistance)
+					{
+						closestDistance = tempDistance;
+						closestFood = i;
+					}
+				}
+				return foodies[closestFood].GetPosition;
 			}
 			else
 			{
-				return target;
+				trackingFood = false;
+				if (target == position)
+				{
+					PointF temp = new PointF(random.Next(0, parentForm.Width), random.Next(parentForm.namePanelBottom, parentForm.Height));
+					return temp;
+				}
+				else
+				{
+					return target;
+				}
+			}
+		}
+
+
+		private void Eat()
+		{
+			int requiredDistance = 25;
+			Food[] foodies = parentForm.foodArray;
+			if (trackingFood == true)
+			{
+				if (Math.Abs(GetDistance(this.position, foodies[closestFood].GetPosition)) < requiredDistance)
+				{
+					parentForm.RemoveFood(closestFood);
+					hunger += 1500;
+					trackingFood = false;
+				} 
 			}
 		}
 
@@ -142,6 +185,7 @@ namespace Aquarium
 
 			return rotatedPoint;
 		}
+
 		//private int x, y;
 		////private int destinationX, destinationY;
 		//private Point position;
