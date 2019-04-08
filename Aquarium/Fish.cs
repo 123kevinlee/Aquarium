@@ -67,12 +67,12 @@ namespace Aquarium
 		{
 			Food[] foodies = parentForm.foodArray;
 			//Checks if there is food
+			float closestDistance = 100000000000000; //Really large number :joy:
 			if (foodies.Length > 0)
 			{
 				trackingFood = true;
 				//Sorts from closest to farthest
 				closestFood = 0;
-				float closestDistance = 100000000000000; //Really large number :joy:
 				for (int i = 0; i < foodies.Length; i++)
 				{
 					float tempDistance = GetDistance(this.position, foodies[i].GetPosition);
@@ -82,6 +82,10 @@ namespace Aquarium
 						closestFood = i;
 					}
 				}
+			}
+			
+			if (closestDistance < 250) //Distance Limit
+			{
 				return foodies[closestFood].GetPosition;
 			}
 			else
@@ -109,7 +113,10 @@ namespace Aquarium
 				if (Math.Abs(GetDistance(this.position, foodies[closestFood].GetPosition)) < requiredDistance)
 				{
 					parentForm.RemoveFood(closestFood);
-					hunger += 1500;
+					if (hunger < 5000) //Max Hunger, to prevent fatness :joy:
+					{
+						hunger += 1500;
+					}
 					trackingFood = false;
 				} 
 			}
