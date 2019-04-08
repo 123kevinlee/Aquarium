@@ -1,2 +1,3 @@
 ﻿1. Pre-death warning (change color)
 2. Death animation (floating upwards)
+3. Change amount of food released

@@ -84,7 +84,7 @@ namespace Aquarium
 				}
 			}
 			
-			if (closestDistance < 250) //Distance Limit
+			if (closestDistance < 100) //Distance Limit
 			{
 				return foodies[closestFood].GetPosition;
 			}
