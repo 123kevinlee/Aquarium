@@ -174,7 +174,31 @@ namespace Aquarium
 
 		private void feed_Button_Click(object sender, EventArgs e)
 		{
-			AddFood(new Food(new PointF(15, titleLabel.Bottom + 5), this, 2F, 10));
+			Random randomSpeed = new Random();
+			int baseSpeed = randomSpeed.Next(2, 3);
+			double extra = randomSpeed.NextDouble();
+			double speed = baseSpeed + extra;
+			//2f
+			AddFood(new Food(new PointF(15, titleLabel.Bottom + 5), this, (float)speed, 10));
+			//if (foodAmount_text.Text != string.Empty)
+			//{
+			//	int amountFood = Convert.ToInt16(foodAmount_text.Text);
+			//	for (int i = 0; i < amountFood; i++)
+			//	{
+			//		//MessageBox.Show(Convert.ToString(i));
+			//		System.Threading.Thread.Sleep(1);
+			//		AddFood(new Food(new PointF(15, titleLabel.Bottom + 5), this, 2F, 10));
+			//	}
+			//}
+			//else
+			//{
+			//	AddFood(new Food(new PointF(15, titleLabel.Bottom + 5), this, 2F, 10));
+			//}
+			//FoodForm FoodForm = new FoodForm();
+			//this.Controls.Add(FoodForm);
+			//FoodForm.BringToFront();
+			//FoodForm.Top = 0;
+			//FoodForm.Left = feed_Button.Right;
 		}
 
 		public Food[] foodArray

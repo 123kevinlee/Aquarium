@@ -84,7 +84,7 @@ namespace Aquarium
 				}
 			}
 			
-			if (closestDistance < 100) //Distance Limit
+			if (closestDistance < 130) //Distance Limit
 			{
 				return foodies[closestFood].GetPosition;
 			}
@@ -136,7 +136,15 @@ namespace Aquarium
 
 		public void DrawImage(PaintEventArgs e)
 		{
-			e.Graphics.DrawImage(fishImage, GetDrawPoints(target.X > position.X));
+			Image hungryFish = Properties.Resources.fishHungry;
+			if (hunger < 500)
+			{
+				e.Graphics.DrawImage(hungryFish, GetDrawPoints(target.X > position.X));
+			}
+			else
+			{
+				e.Graphics.DrawImage(fishImage, GetDrawPoints(target.X > position.X));
+			}
 		}
 
 		private PointF[] GetDrawPoints(bool isFlipped)
@@ -193,107 +201,14 @@ namespace Aquarium
 			return rotatedPoint;
 		}
 
-		//private int x, y;
-		////private int destinationX, destinationY;
-		//private Point position;
-		//private Point target;
-		//private float speed;
-		//private int hunger;
-		//private PictureBox fish;
-		//private Random random = new Random();
-		//private Form mainForm;
-
-		//public Fish(int x, int y, int speed, Form form)
+		//public void DeathAnimation()
 		//{
-		//	//this.x = x;
-		//	//this.y = y;
-		//	this.position = new Point(x, y);
-		//	this.mainForm = form;
-		//	this.speed = speed;
-		//	hunger = 0;
+		//	int targetY = 0;
+		//	int speed = 1;
+		//	float deltaY = targetY - position.Y;
+		//	float deltaPos = Math.Min(speed, deltaY);
 
-		//	//Declaring Fish
-		//	fish = new PictureBox();
-		//	fish.Location = position;
-		//	fish.Image = Aquarium.Properties.Resources.fishOrange1;
-		//	fish.Size = new Size(49, 32);
-		//	fish.SizeMode = PictureBoxSizeMode.Zoom;
-		//	target = new Point(random.Next(0, mainForm.Width), random.Next(0, mainForm.Height));
-		//	//destinationX = random.Next(1, 500);
-		//	//destinationY = random.Next(1, 500);
+		//	position.Y += (float)(deltaPos);
 		//}
-
-		//public void Swim()
-		//{
-		//	//Setting new target
-		//	target = FindTarget();
-
-		//	//Update position
-		//	ChangePosition();
-
-		//}
-
-		//private void ChangePosition()
-		//{
-		//	float deltaX = target.X - position.X;
-		//	float deltaY = target.Y - position.Y;
-
-		//	float angleToTarget = (float)Math.Atan2(deltaY, deltaX);
-
-		//	position.X += (int)(Math.Cos(angleToTarget) * speed);
-		//	position.Y += (int)(Math.Sin(angleToTarget) * speed);
-		//}
-
-		//private Point FindTarget()
-		//{
-		//	//TODO: Add targeting logic here
-
-		//	if (x == 0 || x == mainForm.Width)
-		//	{
-		//		return new Point(random.Next(0, mainForm.Width), random.Next(0, mainForm.Height));
-		//	}
-		//	if (y == 0 || x == mainForm.Height)
-		//	{
-		//		return new Point(random.Next(0, mainForm.Width), random.Next(0, mainForm.Height));
-		//	}
-		//	return target;
-		//}
-
-		//public PictureBox fishPicture
-		//{
-		//	get { return fish; }
-		//}
-
-		////public void Swim()
-		////{
-		////	hunger++;
-		////	if (hunger > 500)
-		////	{
-		////		fish.BackColor = Color.Red;
-		////	}
-		////	if (hunger > 1000)
-		////	{
-		////		//fish.Size(
-		////	}
-
-		////	if (x > destinationX || x == 0 || x == mainForm.Width)
-		////	{
-		////		x -= 1;
-		////	}
-		////	else
-		////	{
-		////		x++;
-		////	}
-		////	if (y > destinationY || y == 0 || x == mainForm.Height)
-		////	{
-		////		y -= 1;
-		////	}
-		////	else
-		////	{
-		////		y++;
-		////	}
-		////	position = new Point(x, y);
-		////	fish.Location = position;
-		////}
 	}
 }

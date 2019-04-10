@@ -48,6 +48,12 @@
   <ItemGroup>
     <Compile Include="Fish.cs" />
     <Compile Include="Food.cs" />
+    <Compile Include="FoodForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="FoodForm.Designer.cs">
+      <DependentUpon>FoodForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -56,6 +62,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FoodForm.resx">
+      <DependentUpon>FoodForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +104,7 @@
     <None Include="Images\reddot.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Images\fishOrange11.png" />
     <Content Include="todo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
