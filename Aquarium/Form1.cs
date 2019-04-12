@@ -93,7 +93,7 @@ namespace Aquarium
 			for (int i = 0; i < school.Length; i++)
 			{
 				school[i].Update();
-				if (school[i].hunger == 0)
+				if (school[i].hunger == 0 && school[i].GetPosition.Y == namePanelBottom)
 				{
 					RemoveFish(i);
 				}

@@ -19,7 +19,7 @@ namespace Aquarium
 		private float drawScale;
 		public Random random = new Random();
 		public float roat;
-		public int hunger = 3000; //50 = about 1 seconds
+		public int hunger = 100; //50 = about 1 seconds
 		private bool trackingFood = false;
 		private int closestFood = 0;
 
@@ -48,7 +48,10 @@ namespace Aquarium
 
 			Eat();
 
-			hunger--;
+			if (hunger > 0)
+			{
+				hunger--;
+			}
 		}
 
 		private void ChangePosition()
@@ -83,8 +86,15 @@ namespace Aquarium
 					}
 				}
 			}
-			
-			if (closestDistance < 130) //Distance Limit
+
+			if (hunger == 0)
+			{
+				speed = 1.5f;
+				PointF floatToTop = new PointF(position.X, parentForm.namePanelBottom);
+				return floatToTop;
+			}
+
+			else if (closestDistance < 130 && hunger != 0) //Distance Limit
 			{
 				return foodies[closestFood].GetPosition;
 			}
@@ -137,10 +147,17 @@ namespace Aquarium
 		public void DrawImage(PaintEventArgs e)
 		{
 			Image hungryFish = Properties.Resources.fishHungry;
-			if (hunger < 500)
+			Image deadFish = Properties.Resources.fishDead;
+			if (hunger == 0)
+			{
+				e.Graphics.DrawImage(deadFish, GetDrawPoints(target.X > position.X));
+			}
+
+			else if (hunger < 750 && hunger > 0)
 			{
 				e.Graphics.DrawImage(hungryFish, GetDrawPoints(target.X > position.X));
 			}
+			
 			else
 			{
 				e.Graphics.DrawImage(fishImage, GetDrawPoints(target.X > position.X));
@@ -182,6 +199,14 @@ namespace Aquarium
 				drawPoints[1] = RotatePoint(drawPoints[1], position, rotation);
 				drawPoints[2] = RotatePoint(drawPoints[2], position, rotation);
 			}
+
+			if (hunger == 0)
+			{
+				drawPoints[0] = new PointF(position.X + (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+				drawPoints[1] = new PointF(position.X - (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+				drawPoints[2] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
+			}
+
 			return drawPoints;
 		}
 
@@ -200,15 +225,5 @@ namespace Aquarium
 
 			return rotatedPoint;
 		}
-
-		//public void DeathAnimation()
-		//{
-		//	int targetY = 0;
-		//	int speed = 1;
-		//	float deltaY = targetY - position.Y;
-		//	float deltaPos = Math.Min(speed, deltaY);
-
-		//	position.Y += (float)(deltaPos);
-		//}
 	}
 }
