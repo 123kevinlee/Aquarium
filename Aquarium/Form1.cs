@@ -47,26 +47,9 @@ namespace Aquarium
 		}
 		#endregion
 
-		private void Form1_MouseClick(object sender, MouseEventArgs e)
-		{
-			//Array.Resize(ref school, school.Length + 1);
-			//Fish fishy = new Fish(e.X, e.Y, 4, this);
-			//school[school.Length - 1] = fishy;
-			//this.Controls.Add(fishy.fishPicture);
-		}
-
-		private void createFish_Button_Click(object sender, EventArgs e)
-		{
-			AddFish(new Fish(new PointF(15, titleLabel.Bottom + 5), this, 4F, (float)1.4, Properties.Resources.fishOrange1));
-			fishNumber_Label.Text = $"Fishes: {school.Length}";
-		}
-
-		//private Fish fishy;
-
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			timer1.Enabled = true;
-			//fishy = new Fish(new PointF(15, titleLabel.Bottom + 5), this, 4F, (float)1.4, Properties.Resources.fishOrange1);
 		}
 
 		private void Form1_Paint(object sender, PaintEventArgs e)
@@ -80,16 +63,18 @@ namespace Aquarium
 			{
 				foodies[i].Draw(e);
 			}
-			//foreach example
+
+			#region foreachExample
 			//foreach (Fish fish in school)
 			//{
 			//	fish.DrawImage(e);
 			//}
+			#endregion
 		}
+
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			//check to see there are fish in the school
-			
 			for (int i = 0; i < school.Length; i++)
 			{
 				school[i].Update();
@@ -105,71 +90,12 @@ namespace Aquarium
 				foodies[i].Update();
 				Invalidate();
 			}
-
-
-			//foreach (Fish fishy in school)
-			//{
-			//	fishy.Update();
-			//	//Recalls draw timer
-			//	Invalidate();
-			//}
 		}
 
-		public void AddFish(Fish fish)
+		private void createFish_Button_Click(object sender, EventArgs e)
 		{
-			Array.Resize(ref school, school.Length + 1);
-			school[school.Length - 1] = fish;
-		}
-
-		public void RemoveFish(int index)
-		{
-			fishSwap(ref school[index], ref school[school.Length - 1]);
-			Array.Resize(ref school, school.Length - 1);
+			AddFish(new Fish(new PointF(15, titleLabel.Bottom + 5), this, 4F, (float)1.4, Properties.Resources.fishOrange1));
 			fishNumber_Label.Text = $"Fishes: {school.Length}";
-		}
-
-		public void fishSwap(ref Fish x, ref Fish y)
-		{
-			Fish temp = x;
-			x = y;
-			y = temp;
-		}
-
-		public void AddFood(Food foodPiece)
-		{
-			Array.Resize(ref foodies, foodies.Length + 1);
-			foodies[foodies.Length - 1] = foodPiece;
-		}
-
-		public void RemoveFood(int index)
-		{
-			foodSwap(ref foodies[index], ref foodies[foodies.Length - 1]);
-			Array.Resize(ref foodies, foodies.Length - 1);
-		}
-
-		public void foodSwap(ref Food x, ref Food y)
-		{
-			Food temp = x;
-			x = y;
-			y = temp;
-		}
-		//X Button
-		private void pictureBox1_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
-		public Point MousePos
-		{
-			get
-			{
-				return PointToClient(MousePosition);
-			}
-		}
-
-		public int namePanelBottom
-		{
-			get { return panel1.Bottom; }
 		}
 
 		private void feed_Button_Click(object sender, EventArgs e)
@@ -177,9 +103,12 @@ namespace Aquarium
 			Random randomSpeed = new Random();
 			int baseSpeed = randomSpeed.Next(2, 3);
 			double extra = randomSpeed.NextDouble();
-			double speed = baseSpeed + extra;
-			//2f
+			double speed = baseSpeed + extra; //OG Default = 2f
 			AddFood(new Food(new PointF(15, titleLabel.Bottom + 5), this, (float)speed, 10));
+
+			#region FoodForm
+			//Possible separate feed form implementation
+
 			//if (foodAmount_text.Text != string.Empty)
 			//{
 			//	int amountFood = Convert.ToInt16(foodAmount_text.Text);
@@ -199,6 +128,64 @@ namespace Aquarium
 			//FoodForm.BringToFront();
 			//FoodForm.Top = 0;
 			//FoodForm.Left = feed_Button.Right;
+			#endregion
+		}
+
+		public void AddFish(Fish fish)
+		{
+			Array.Resize(ref school, school.Length + 1);
+			school[school.Length - 1] = fish;
+		}
+
+		public void RemoveFish(int index)
+		{
+			FishSwap(ref school[index], ref school[school.Length - 1]);
+			Array.Resize(ref school, school.Length - 1);
+			fishNumber_Label.Text = $"Fishes: {school.Length}";
+		}
+
+		public void FishSwap(ref Fish x, ref Fish y)
+		{
+			var temp = x;
+			x = y;
+			y = temp;
+		}
+
+		public void AddFood(Food foodPiece)
+		{
+			Array.Resize(ref foodies, foodies.Length + 1);
+			foodies[foodies.Length - 1] = foodPiece;
+		}
+
+		public void RemoveFood(int index)
+		{
+			FoodSwap(ref foodies[index], ref foodies[foodies.Length - 1]);
+			Array.Resize(ref foodies, foodies.Length - 1);
+		}
+
+		public void FoodSwap(ref Food x, ref Food y)
+		{
+			var temp = x;
+			x = y;
+			y = temp;
+		}
+
+		//X Button
+		private void pictureBox1_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		//Form get accessors
+
+		public Point MousePos
+		{
+			get { return PointToClient(MousePosition); }
+		}
+
+		public int namePanelBottom
+		{
+			get { return panel1.Bottom; }
 		}
 
 		public Food[] foodArray
@@ -206,5 +193,4 @@ namespace Aquarium
 			get { return foodies; }
 		}
 	}
-
 }

@@ -13,15 +13,14 @@ namespace Aquarium
 	{
 		private PointF position;
 		private PointF target;
-		private Form1 parentForm;
+		private readonly Form1 parentForm;
 		private float speed;
-		private Image fishImage;
-		private float drawScale;
+		private readonly Image fishImage;
+		private readonly float drawScale;
 		public Random random = new Random();
-		public float roat;
-		public int hunger = 100; //50 = about 1 seconds
+		public int hunger = 3000; //50 = about 1 seconds ; 3000 = about 1 minute
 		private bool trackingFood = false;
-		private int closestFood = 0;
+		private int closestFood;
 
 		public PointF GetPosition
 		{
@@ -46,7 +45,7 @@ namespace Aquarium
 			//Update position
 			ChangePosition();
 
-			Eat();
+			FoodSystem();
 
 			if (hunger > 0)
 			{
@@ -69,12 +68,12 @@ namespace Aquarium
 		private PointF FindTarget()
 		{
 			Food[] foodies = parentForm.foodArray;
-			//Checks if there is food
-			float closestDistance = 100000000000000; //Really large number :joy:
+			float closestDistance = 100000000000000; //Really large number as the default closest distance :joy:
+
+			//Checks if there is food 
 			if (foodies.Length > 0)
 			{
-				trackingFood = true;
-				//Sorts from closest to farthest
+				//Calculates nearest food
 				closestFood = 0;
 				for (int i = 0; i < foodies.Length; i++)
 				{
@@ -87,6 +86,10 @@ namespace Aquarium
 				}
 			}
 
+			//How far you want a fish to travel for a piece of food
+			int chaseRange = 150;
+
+			//Target after death
 			if (hunger == 0)
 			{
 				speed = 1.5f;
@@ -94,10 +97,14 @@ namespace Aquarium
 				return floatToTop;
 			}
 
-			else if (closestDistance < 130 && hunger != 0) //Distance Limit
+			//tracking nearest food
+			else if (closestDistance < chaseRange && hunger != 0  && hunger < 15000) //Max Hunger(15000 = 5 minutes), to prevent fatness :joy:
 			{
+				trackingFood = true;
 				return foodies[closestFood].GetPosition;
 			}
+
+			//normal swimming
 			else
 			{
 				trackingFood = false;
@@ -113,20 +120,17 @@ namespace Aquarium
 			}
 		}
 
-
-		private void Eat()
+		private void FoodSystem()
 		{
-			int requiredDistance = 25;
+			int eatDistance = 25;
 			Food[] foodies = parentForm.foodArray;
+
 			if (trackingFood == true)
 			{
-				if (Math.Abs(GetDistance(this.position, foodies[closestFood].GetPosition)) < requiredDistance)
+				if (Math.Abs(GetDistance(this.position, foodies[closestFood].GetPosition)) < eatDistance)
 				{
 					parentForm.RemoveFood(closestFood);
-					if (hunger < 5000) //Max Hunger, to prevent fatness :joy:
-					{
-						hunger += 1500;
-					}
+					hunger += 1500;
 					trackingFood = false;
 				} 
 			}
@@ -139,25 +143,24 @@ namespace Aquarium
 			return (float)Math.Sqrt(Math.Pow(deltaX, 2) + Math.Pow(deltaY, 2));
 		}
 
-		public void Draw(PaintEventArgs e)
-		{
-			e.Graphics.FillEllipse(Brushes.Black, position.X - 50, position.Y, 100, 100);
-		}
-
 		public void DrawImage(PaintEventArgs e)
 		{
 			Image hungryFish = Properties.Resources.fishHungry;
 			Image deadFish = Properties.Resources.fishDead;
+
+			//Normal fish
 			if (hunger == 0)
 			{
 				e.Graphics.DrawImage(deadFish, GetDrawPoints(target.X > position.X));
 			}
 
+			//Hungry Fish : 750 = 15 secs until death
 			else if (hunger < 750 && hunger > 0)
 			{
 				e.Graphics.DrawImage(hungryFish, GetDrawPoints(target.X > position.X));
 			}
 			
+			//Dead Fish...
 			else
 			{
 				e.Graphics.DrawImage(fishImage, GetDrawPoints(target.X > position.X));
@@ -174,9 +177,16 @@ namespace Aquarium
 			float deltaX = target.X - position.X;
 			float deltaY = target.Y - position.Y;
 			float rotation = (float)Math.Atan2(deltaY, deltaX);
-			roat = rotation;
 
-			if (isFlipped)
+			if (hunger == 0)
+			{
+				//Belly Up!
+				drawPoints[0] = new PointF(position.X + (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+				drawPoints[1] = new PointF(position.X - (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
+				drawPoints[2] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
+			}
+
+			else if (isFlipped && hunger > 0)
 			{
 				//right
 				rotation += (float)Math.PI * 2;
@@ -198,13 +208,6 @@ namespace Aquarium
 				drawPoints[0] = RotatePoint(drawPoints[0], position, rotation);
 				drawPoints[1] = RotatePoint(drawPoints[1], position, rotation);
 				drawPoints[2] = RotatePoint(drawPoints[2], position, rotation);
-			}
-
-			if (hunger == 0)
-			{
-				drawPoints[0] = new PointF(position.X + (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
-				drawPoints[1] = new PointF(position.X - (fishImageWidth / 2), position.Y + (fishImageHeight / 2));
-				drawPoints[2] = new PointF(position.X + (fishImageWidth / 2), position.Y - (fishImageHeight / 2));
 			}
 
 			return drawPoints;
