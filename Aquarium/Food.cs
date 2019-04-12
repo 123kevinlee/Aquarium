@@ -48,7 +48,9 @@ namespace Aquarium
 
 		public void Draw(PaintEventArgs e)
 		{
-			e.Graphics.FillEllipse(Brushes.Brown, position.X, position.Y, size, size);
+			Image food = Properties.Resources.food; 
+			//e.Graphics.FillEllipse(Brushes.Brown, position.X, position.Y, size, size);
+			e.Graphics.DrawImage(food, position);
 		}
 	}
 }

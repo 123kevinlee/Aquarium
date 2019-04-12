@@ -32,10 +32,10 @@
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.fishNumber_Label = new System.Windows.Forms.Label();
 			this.feed_Button = new System.Windows.Forms.Button();
-			this.pictureBox1 = new System.Windows.Forms.PictureBox();
-			this.createFish_Button = new System.Windows.Forms.Button();
 			this.titleLabel = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.pictureBox1 = new System.Windows.Forms.PictureBox();
+			this.createFish_Button = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
@@ -85,31 +85,6 @@
 			this.feed_Button.UseVisualStyleBackColor = false;
 			this.feed_Button.Click += new System.EventHandler(this.feed_Button_Click);
 			// 
-			// pictureBox1
-			// 
-			this.pictureBox1.Image = global::Aquarium.Properties.Resources.reddot;
-			this.pictureBox1.Location = new System.Drawing.Point(791, 10);
-			this.pictureBox1.Name = "pictureBox1";
-			this.pictureBox1.Size = new System.Drawing.Size(20, 20);
-			this.pictureBox1.TabIndex = 2;
-			this.pictureBox1.TabStop = false;
-			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
-			// 
-			// createFish_Button
-			// 
-			this.createFish_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-			this.createFish_Button.FlatAppearance.BorderSize = 0;
-			this.createFish_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.createFish_Button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.createFish_Button.ForeColor = System.Drawing.Color.Blue;
-			this.createFish_Button.Location = new System.Drawing.Point(290, 5);
-			this.createFish_Button.Name = "createFish_Button";
-			this.createFish_Button.Size = new System.Drawing.Size(85, 28);
-			this.createFish_Button.TabIndex = 1;
-			this.createFish_Button.Text = "Add Fish";
-			this.createFish_Button.UseVisualStyleBackColor = false;
-			this.createFish_Button.Click += new System.EventHandler(this.createFish_Button_Click);
-			// 
 			// titleLabel
 			// 
 			this.titleLabel.AutoSize = true;
@@ -128,6 +103,31 @@
 			// 
 			this.timer1.Interval = 15;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// pictureBox1
+			// 
+			this.pictureBox1.Image = global::Aquarium.Properties.Resources.reddot;
+			this.pictureBox1.Location = new System.Drawing.Point(791, 10);
+			this.pictureBox1.Name = "pictureBox1";
+			this.pictureBox1.Size = new System.Drawing.Size(20, 20);
+			this.pictureBox1.TabIndex = 2;
+			this.pictureBox1.TabStop = false;
+			this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+			// 
+			// createFish_Button
+			// 
+			this.createFish_Button.BackColor = System.Drawing.Color.Navy;
+			this.createFish_Button.FlatAppearance.BorderSize = 0;
+			this.createFish_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.createFish_Button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.createFish_Button.ForeColor = System.Drawing.Color.Blue;
+			this.createFish_Button.Image = global::Aquarium.Properties.Resources.addFish1;
+			this.createFish_Button.Location = new System.Drawing.Point(295, -3);
+			this.createFish_Button.Name = "createFish_Button";
+			this.createFish_Button.Size = new System.Drawing.Size(85, 40);
+			this.createFish_Button.TabIndex = 1;
+			this.createFish_Button.UseVisualStyleBackColor = false;
+			this.createFish_Button.Click += new System.EventHandler(this.createFish_Button_Click);
 			// 
 			// Form1
 			// 

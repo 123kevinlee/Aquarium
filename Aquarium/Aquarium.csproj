@@ -106,6 +106,9 @@
   <ItemGroup>
     <None Include="Images\fishOrange11.png" />
     <None Include="Images\fishOrange111.png" />
+    <None Include="Resources\addFish.bmp" />
+    <None Include="Images\addFish.png" />
+    <None Include="Images\food.png" />
     <Content Include="todo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
