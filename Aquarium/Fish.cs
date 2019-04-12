@@ -18,7 +18,8 @@ namespace Aquarium
 		private readonly Image fishImage;
 		private readonly float drawScale;
 		public Random random = new Random();
-		public int hunger = 3000; //50 = about 1 seconds ; 3000 = about 1 minute
+		public int maxHunger = 3000;  //50 = about 1 seconds ; 3000 = about 1 minute
+		public int hunger = 3000;
 		private bool trackingFood = false;
 		private int closestFood;
 
@@ -102,7 +103,7 @@ namespace Aquarium
 			}
 
 			//tracking nearest food
-			else if (closestDistance < chaseRange && hunger != 0  && hunger < 15000) //Max Hunger(15000 = 5 minutes), to prevent fatness :joy:
+			else if (closestDistance < chaseRange && hunger != 0  && hunger < maxHunger) 
 			{
 				trackingFood = true;
 				return foodies[closestFood].GetPosition;

@@ -126,6 +126,7 @@ namespace Aquarium
 		private void timer1_Tick(object sender, EventArgs e)
 		{
 			//check to see there are fish in the school
+			double avgHunger = 0;
 			for (int i = 0; i < school.Length; i++)
 			{
 				school[i].Update();
@@ -133,9 +134,23 @@ namespace Aquarium
 				{
 					RemoveFish(i);
 				}
+				avgHunger += school[i].hunger;
 				Invalidate();
 			}
 
+			if (avgHunger == 0)
+			{
+				this.hunger_label.Text = string.Empty;
+			}
+			else if (school.Length > 0)
+			{
+				avgHunger /= school.Length;
+				avgHunger /= school[0].maxHunger;
+				avgHunger *= 100;
+				avgHunger = Math.Round(avgHunger);
+				this.hunger_label.Text = $"Average Hunger: {avgHunger}%";
+			}
+			
 			for (int i = 0; i < foodies.Length; i++)
 			{
 				foodies[i].Update();

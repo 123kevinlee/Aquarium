@@ -1,5 +1,7 @@
 ﻿1. Pre-death warning (change color) ✓
 2. Death animation (floating upwards) ✓
 3. Change amount of food released: maybe add a separate feeding form
-4. Fish tank visual improvements: Rocks and plants
-5. GUI improvements: Buttons with images of fish&addsign and food&addsign
+4. Fish tank visual improvements: Rocks and plants ✓
+5. GUI improvements: Buttons with images of fish&addsign and food&addsign ✓
+6. Curved Swimming ✓
+7. Different fish: Predator fish that eats the goldfish?

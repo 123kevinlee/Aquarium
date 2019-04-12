@@ -36,6 +36,7 @@
 			this.feed_Button = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.createFish_Button = new System.Windows.Forms.Button();
+			this.hunger_label = new System.Windows.Forms.Label();
 			this.panel1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
@@ -43,6 +44,7 @@
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.Navy;
+			this.panel1.Controls.Add(this.hunger_label);
 			this.panel1.Controls.Add(this.fishNumber_Label);
 			this.panel1.Controls.Add(this.feed_Button);
 			this.panel1.Controls.Add(this.pictureBox1);
@@ -129,6 +131,17 @@
 			this.createFish_Button.UseVisualStyleBackColor = false;
 			this.createFish_Button.Click += new System.EventHandler(this.createFish_Button_Click);
 			// 
+			// hunger_label
+			// 
+			this.hunger_label.AutoSize = true;
+			this.hunger_label.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.hunger_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.hunger_label.Location = new System.Drawing.Point(498, 8);
+			this.hunger_label.Name = "hunger_label";
+			this.hunger_label.Size = new System.Drawing.Size(192, 18);
+			this.hunger_label.TabIndex = 4;
+			this.hunger_label.Text = "Average Hunger: 100%";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -158,6 +171,7 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Button feed_Button;
 		private System.Windows.Forms.Label fishNumber_Label;
+		private System.Windows.Forms.Label hunger_label;
 	}
 }
 
