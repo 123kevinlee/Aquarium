@@ -31,9 +31,9 @@
 			this.components = new System.ComponentModel.Container();
 			this.panel1 = new System.Windows.Forms.Panel();
 			this.fishNumber_Label = new System.Windows.Forms.Label();
-			this.feed_Button = new System.Windows.Forms.Button();
 			this.titleLabel = new System.Windows.Forms.Label();
 			this.timer1 = new System.Windows.Forms.Timer(this.components);
+			this.feed_Button = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.createFish_Button = new System.Windows.Forms.Button();
 			this.panel1.SuspendLayout();
@@ -70,21 +70,6 @@
 			this.fishNumber_Label.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseMove);
 			this.fishNumber_Label.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseUp);
 			// 
-			// feed_Button
-			// 
-			this.feed_Button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-			this.feed_Button.FlatAppearance.BorderSize = 0;
-			this.feed_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.feed_Button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.feed_Button.ForeColor = System.Drawing.Color.Blue;
-			this.feed_Button.Location = new System.Drawing.Point(413, 5);
-			this.feed_Button.Name = "feed_Button";
-			this.feed_Button.Size = new System.Drawing.Size(85, 28);
-			this.feed_Button.TabIndex = 3;
-			this.feed_Button.Text = "Feed Fish";
-			this.feed_Button.UseVisualStyleBackColor = false;
-			this.feed_Button.Click += new System.EventHandler(this.feed_Button_Click);
-			// 
 			// titleLabel
 			// 
 			this.titleLabel.AutoSize = true;
@@ -103,6 +88,21 @@
 			// 
 			this.timer1.Interval = 15;
 			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
+			// feed_Button
+			// 
+			this.feed_Button.BackColor = System.Drawing.Color.Navy;
+			this.feed_Button.BackgroundImage = global::Aquarium.Properties.Resources.addFood;
+			this.feed_Button.FlatAppearance.BorderSize = 0;
+			this.feed_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.feed_Button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.feed_Button.ForeColor = System.Drawing.Color.Blue;
+			this.feed_Button.Location = new System.Drawing.Point(376, -3);
+			this.feed_Button.Name = "feed_Button";
+			this.feed_Button.Size = new System.Drawing.Size(38, 44);
+			this.feed_Button.TabIndex = 3;
+			this.feed_Button.UseVisualStyleBackColor = false;
+			this.feed_Button.Click += new System.EventHandler(this.feed_Button_Click);
 			// 
 			// pictureBox1
 			// 

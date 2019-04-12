@@ -110,8 +110,8 @@ namespace Aquarium
 				trackingFood = false;
 				if (target == position)
 				{
-					PointF temp = new PointF(random.Next(0, parentForm.Width), random.Next(parentForm.namePanelBottom, parentForm.Height));
-					return temp;
+					PointF randomPoint = new PointF(random.Next(0, parentForm.Width), random.Next(parentForm.namePanelBottom, parentForm.Height - 5));
+					return randomPoint;
 				}
 				else
 				{
@@ -148,7 +148,7 @@ namespace Aquarium
 			Image hungryFish = Properties.Resources.fishHungry;
 			Image deadFish = Properties.Resources.fishDead;
 
-			//Normal fish
+			//Dead Fish...
 			if (hunger == 0)
 			{
 				e.Graphics.DrawImage(deadFish, GetDrawPoints(target.X > position.X));
@@ -160,7 +160,7 @@ namespace Aquarium
 				e.Graphics.DrawImage(hungryFish, GetDrawPoints(target.X > position.X));
 			}
 			
-			//Dead Fish...
+			//Normal Fish
 			else
 			{
 				e.Graphics.DrawImage(fishImage, GetDrawPoints(target.X > position.X));

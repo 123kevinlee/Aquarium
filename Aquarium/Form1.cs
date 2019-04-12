@@ -54,6 +54,36 @@ namespace Aquarium
 
 		private void Form1_Paint(object sender, PaintEventArgs e)
 		{
+			#region Background objects
+			Image sand = Properties.Resources.sand;
+			PointF sandPos1 = new PointF(0, 500);
+			PointF sandPos2 = new PointF(500, 500);
+			e.Graphics.DrawImage(sand, sandPos2);
+			e.Graphics.DrawImage(sand, sandPos1);
+
+			Image rockWgrass = Properties.Resources.rockWgrass;
+			PointF rockWgrassPos = new PointF(525, 380);
+			e.Graphics.DrawImage(rockWgrass, rockWgrassPos);
+
+			Image treasureChest = Properties.Resources.treasureChest;
+			PointF treasureChestPos = new PointF(60, 400);
+			e.Graphics.DrawImage(treasureChest, treasureChestPos);
+
+			Image seaweed = Properties.Resources.seaweed;
+			PointF seaweedPos1 = new PointF(175, 483);
+			e.Graphics.DrawImage(seaweed, seaweedPos1);
+
+			PointF seaweedPos4 = new PointF(325, 483);
+			e.Graphics.DrawImage(seaweed, seaweedPos4);
+
+			PointF seaweedPos6 = new PointF(425, 483);
+			e.Graphics.DrawImage(seaweed, seaweedPos6);
+
+			PointF seaweedPos7 = new PointF(475, 483);
+			e.Graphics.DrawImage(seaweed, seaweedPos7);
+
+			#endregion
+
 			for (int i = 0; i < school.Length; i++)
 			{
 				school[i].DrawImage(e);
@@ -64,11 +94,32 @@ namespace Aquarium
 				foodies[i].Draw(e);
 			}
 
+			#region Foreground Objects
+
+			Image rockAqua = Properties.Resources.rock;
+			PointF rockAquaPos = new PointF(0, 440);
+			e.Graphics.DrawImage(rockAqua, rockAquaPos);
+
+			PointF seaweedPos8 = new PointF(-30, 483);
+			e.Graphics.DrawImage(seaweed, seaweedPos8);
+
+			PointF seaweedPos2 = new PointF(225, 483);
+			e.Graphics.DrawImage(seaweed, seaweedPos2);
+
+			PointF seaweedPos3 = new PointF(275, 483);
+			e.Graphics.DrawImage(seaweed, seaweedPos3);
+
+			PointF seaweedPos5 = new PointF(375, 483);
+			e.Graphics.DrawImage(seaweed, seaweedPos5);
+			#endregion
+
 			#region foreachExample
+
 			//foreach (Fish fish in school)
 			//{
 			//	fish.DrawImage(e);
 			//}
+
 			#endregion
 		}
 

@@ -109,6 +109,14 @@
     <None Include="Resources\addFish.bmp" />
     <None Include="Images\addFish.png" />
     <None Include="Images\food.png" />
+    <None Include="Images\Capture.PNG" />
+    <None Include="Images\fishOrange12.png" />
+    <None Include="Images\addFood.png" />
+    <None Include="Images\rockWgrass.png" />
+    <None Include="Images\rock.png" />
+    <None Include="Images\sand.png" />
+    <None Include="Images\treasureChest.png" />
+    <None Include="Images\seaweed.png" />
     <Content Include="todo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
