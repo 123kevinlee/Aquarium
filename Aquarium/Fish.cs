@@ -65,6 +65,10 @@ namespace Aquarium
 			position.Y += (float)(Math.Sin(angleToTarget) * deltaPos);
 		}
 
+		//Curving swimming variables
+		private double moveVelocity;
+		private bool upORdown;
+
 		private PointF FindTarget()
 		{
 			Food[] foodies = parentForm.foodArray;
@@ -107,15 +111,39 @@ namespace Aquarium
 			//normal swimming
 			else
 			{
-				trackingFood = false;
+				moveVelocity = random.NextDouble();
+				if (this.position.Y < parentForm.namePanelBottom + 20 || this.position.Y > parentForm.Height - 225) //Prevents curving off the screen
+				{
+					moveVelocity = 0;
+				}
+				
+				trackingFood = false; 
+
 				if (target == position)
 				{
 					PointF randomPoint = new PointF(random.Next(0, parentForm.Width), random.Next(parentForm.namePanelBottom, parentForm.Height - 5));
+					int upORdownRand = random.Next(0, 2);
+					if (upORdownRand == 0)
+					{
+						upORdown = false; //curves down
+					}
+					else
+					{
+						upORdown = true; //curves up
+					}
 					return randomPoint;
 				}
 				else
 				{
-					return target;
+					//Moving target allows the fish to curve while swimming
+					PointF movingTarget = new PointF(target.X, target.Y + (float)moveVelocity);
+					if (upORdown == true) 
+					{
+						movingTarget = new PointF(target.X, target.Y - (float)moveVelocity);
+					}
+					return movingTarget;
+
+					//return target; (legacy target system: used to just return the same target until target was reached)
 				}
 			}
 		}
