@@ -61,7 +61,7 @@
 			this.fishNumber_Label.AutoSize = true;
 			this.fishNumber_Label.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.fishNumber_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.fishNumber_Label.Location = new System.Drawing.Point(178, 12);
+			this.fishNumber_Label.Location = new System.Drawing.Point(696, 8);
 			this.fishNumber_Label.Name = "fishNumber_Label";
 			this.fishNumber_Label.Size = new System.Drawing.Size(79, 18);
 			this.fishNumber_Label.TabIndex = 2;
@@ -75,11 +75,11 @@
 			this.titleLabel.AutoSize = true;
 			this.titleLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.titleLabel.ForeColor = System.Drawing.Color.White;
-			this.titleLabel.Location = new System.Drawing.Point(6, 7);
+			this.titleLabel.Location = new System.Drawing.Point(6, 5);
 			this.titleLabel.Name = "titleLabel";
-			this.titleLabel.Size = new System.Drawing.Size(150, 24);
+			this.titleLabel.Size = new System.Drawing.Size(187, 24);
 			this.titleLabel.TabIndex = 0;
-			this.titleLabel.Text = "Jack Sparrow";
+			this.titleLabel.Text = "Magnus Piscinam";
 			this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseDown);
 			this.titleLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseMove);
 			this.titleLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseUp);
@@ -97,7 +97,7 @@
 			this.feed_Button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.feed_Button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.feed_Button.ForeColor = System.Drawing.Color.Blue;
-			this.feed_Button.Location = new System.Drawing.Point(376, -3);
+			this.feed_Button.Location = new System.Drawing.Point(273, -3);
 			this.feed_Button.Name = "feed_Button";
 			this.feed_Button.Size = new System.Drawing.Size(38, 44);
 			this.feed_Button.TabIndex = 3;
@@ -107,7 +107,7 @@
 			// pictureBox1
 			// 
 			this.pictureBox1.Image = global::Aquarium.Properties.Resources.reddot;
-			this.pictureBox1.Location = new System.Drawing.Point(791, 10);
+			this.pictureBox1.Location = new System.Drawing.Point(791, 9);
 			this.pictureBox1.Name = "pictureBox1";
 			this.pictureBox1.Size = new System.Drawing.Size(20, 20);
 			this.pictureBox1.TabIndex = 2;
@@ -122,7 +122,7 @@
 			this.createFish_Button.Font = new System.Drawing.Font("Arial Rounded MT Bold", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.createFish_Button.ForeColor = System.Drawing.Color.Blue;
 			this.createFish_Button.Image = global::Aquarium.Properties.Resources.addFish1;
-			this.createFish_Button.Location = new System.Drawing.Point(295, -3);
+			this.createFish_Button.Location = new System.Drawing.Point(192, -3);
 			this.createFish_Button.Name = "createFish_Button";
 			this.createFish_Button.Size = new System.Drawing.Size(85, 40);
 			this.createFish_Button.TabIndex = 1;
