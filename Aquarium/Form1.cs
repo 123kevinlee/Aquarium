@@ -170,12 +170,13 @@ namespace Aquarium
 		private void createFish_Button_Click(object sender, EventArgs e)
 		{
 			AddFish(new Fish(new PointF(15, titleLabel.Bottom + 5), this, 4F, (float)1.4, Properties.Resources.fishOrange1));
-			fishNumber_Label.Text = $"Fishes: {school.Length}";
+			fishNumber_Label.Text = $"Fishes: {school.Length + sharks.Length}";
 		}
 
 		private void addShark_button_Click(object sender, EventArgs e)
 		{
 			AddShark(new Shark(new PointF(15, titleLabel.Bottom + 5), this, 5F, (float)1.4, Properties.Resources.shark));
+			fishNumber_Label.Text = $"Fishes: {school.Length + sharks.Length}";
 		}
 
 		private void feed_Button_Click(object sender, EventArgs e)
@@ -221,7 +222,7 @@ namespace Aquarium
 		{
 			FishSwap(ref school[index], ref school[school.Length - 1]);
 			Array.Resize(ref school, school.Length - 1);
-			fishNumber_Label.Text = $"Fishes: {school.Length}";
+			fishNumber_Label.Text = $"Fishes: {school.Length + sharks.Length}";
 		}
 
 		public void FishSwap(ref Fish x, ref Fish y)
@@ -241,6 +242,7 @@ namespace Aquarium
 		{
 			SharkSwap(ref sharks[index], ref sharks[sharks.Length - 1]);
 			Array.Resize(ref sharks, sharks.Length - 1);
+			fishNumber_Label.Text = $"Fishes: {school.Length + sharks.Length}";
 		}
 
 		public void SharkSwap(ref Shark x, ref Shark y)
