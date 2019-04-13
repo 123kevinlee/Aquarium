@@ -122,6 +122,8 @@
     <None Include="Images\shark.png" />
     <None Include="Images\shark1.png" />
     <None Include="Images\shark11.png" />
+    <None Include="Images\reddot1.png" />
+    <None Include="Images\yellowdot.png" />
     <Content Include="todo.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
