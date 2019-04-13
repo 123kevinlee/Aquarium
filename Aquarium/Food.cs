@@ -13,7 +13,6 @@ namespace Aquarium
 		private PointF position;
 		private Form1 parentForm;
 		private float speed;
-		private int size;
 		public Random random = new Random();
 
 		public PointF GetPosition
@@ -25,7 +24,6 @@ namespace Aquarium
 		{
 			this.parentForm = parentForm;
 			this.speed = speed;
-			this.size = size;
 			position = startPosition;
 
 			position.X = random.Next(10, parentForm.Width - 10);
@@ -39,7 +37,7 @@ namespace Aquarium
 
 		private void ChangePosition()
 		{
-			int targetY = parentForm.Height - size + 1;
+			int targetY = parentForm.Height - Properties.Resources.food.Height/2;
 			float deltaY = targetY - position.Y;
 			float deltaPos = Math.Min(speed, deltaY);
 
