@@ -121,43 +121,55 @@
   <data name="fishHungry" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\fishOrange11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="fishOrange2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\fishOrange12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fishOrange1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\fishOrange1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fishDead" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\fishOrange111.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="reddot" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\reddot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="fishOrange1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\fishOrange1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="rockWgrass" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\rockWgrass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="addFish1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\addFish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="addFood" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\addFood.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="food" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\food.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addFish" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\addFish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="addFood" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\addFood.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="treasureChest" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\treasureChest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="rock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\rock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="rockWgrass" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\rockWgrass.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="reddot" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\reddot.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="addFish1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\addFish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="sand" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\sand.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="addFish" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\addFish.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="seaweed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\seaweed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="treasureChest" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\treasureChest.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="fishOrange2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\fishOrange12.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="addShark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\addShark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shark" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\shark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sharkDead" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\shark11.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sharkHungry" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\shark1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

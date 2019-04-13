@@ -9,33 +9,32 @@ using System.Drawing.Imaging;
 
 namespace Aquarium
 {
-	public class Fish
+	public class Shark
 	{
 		private PointF position;
 		private PointF target;
 		private readonly Form1 parentForm;
 		private float speed;
-		private readonly Image fishImage;
+		private readonly Image sharkImage;
 		private readonly float drawScale;
 		public Random random = new Random();
-		public int maxHunger = 3000;  //50 = about 1 seconds ; 3000 = about 1 minute
-		public int hunger = 3000;
+		public int maxHunger = 9000;  //50 = about 1 second ; 9000 = about 3 minutes
+		public int hunger = 9000;
 		private bool trackingFood = false;
-		private int closestFood;
-		public bool eatingByShark = false;
+		private int closestGoldfish;
 
 		public PointF GetPosition
 		{
 			get { return position; }
 		}
 
-		public Fish(PointF startPosition, Form1 parentForm, float speed, float drawScale, Image fishImage)
+		public Shark(PointF startPosition, Form1 parentForm, float speed, float drawScale, Image fishImage)
 		{
 			this.position = startPosition;
 			this.parentForm = parentForm;
 			this.speed = speed;
 			this.drawScale = drawScale;
-			this.fishImage = fishImage;
+			this.sharkImage = fishImage;
 			target = position;
 		}
 
@@ -73,27 +72,27 @@ namespace Aquarium
 
 		private PointF FindTarget()
 		{
-			Food[] foodies = parentForm.foodArray;
+			Fish[] foodies = parentForm.fishArray;
 			float closestDistance = 100000000000000; //Really large number as the default closest distance :joy:
 
 			//Checks if there is food 
 			if (foodies.Length > 0)
 			{
 				//Calculates nearest food
-				closestFood = 0;
+				closestGoldfish = 0;
 				for (int i = 0; i < foodies.Length; i++)
 				{
 					float tempDistance = GetDistance(this.position, foodies[i].GetPosition);
 					if (tempDistance < closestDistance)
 					{
 						closestDistance = tempDistance;
-						closestFood = i;
+						closestGoldfish = i;
 					}
 				}
 			}
 
 			//How far you want a fish to travel for a piece of food
-			int chaseRange = 150;
+			int chaseRange = 500;
 
 			//Target after death
 			if (hunger == 0)
@@ -104,10 +103,10 @@ namespace Aquarium
 			}
 
 			//tracking nearest food
-			else if (closestDistance < chaseRange && hunger != 0  && hunger < maxHunger) 
+			else if (closestDistance < chaseRange && hunger != 0 && hunger < maxHunger)
 			{
 				trackingFood = true;
-				return foodies[closestFood].GetPosition;
+				return foodies[closestGoldfish].GetPosition;
 			}
 
 			//normal swimming
@@ -118,8 +117,8 @@ namespace Aquarium
 				{
 					moveVelocity = 0;
 				}
-				
-				trackingFood = false; 
+
+				trackingFood = false;
 
 				if (target == position)
 				{
@@ -139,37 +138,35 @@ namespace Aquarium
 				{
 					//Moving target allows the fish to curve while swimming
 					PointF movingTarget = new PointF(target.X, target.Y + (float)moveVelocity);
-					if (upORdown == true) 
+					if (upORdown == true)
 					{
 						movingTarget = new PointF(target.X, target.Y - (float)moveVelocity);
 					}
 					return movingTarget;
-
-					//return target; (legacy target system: used to just return the same target until target was reached)
 				}
 			}
 		}
 
 		private void FoodSystem()
 		{
-			int eatDistance = 25;
-			Food[] foodies = parentForm.foodArray;
+			int eatDistance = 40;
+			Fish[] foodies = parentForm.fishArray;
 
 			if (trackingFood == true)
 			{
-				if (Math.Abs(GetDistance(this.position, foodies[closestFood].GetPosition)) < eatDistance)
+				if (Math.Abs(GetDistance(this.position, foodies[closestGoldfish].GetPosition)) < eatDistance)
 				{
-					parentForm.RemoveFood(closestFood);
-					if (hunger + 1500 > maxHunger)
+					foodies[closestGoldfish].eatingByShark = true;
+					if (hunger + foodies[closestGoldfish].hunger > maxHunger)
 					{
 						hunger += maxHunger - hunger;
 					}
 					else
 					{
-						hunger += 1500;
+						hunger += foodies[closestGoldfish].hunger;
 					}
 					trackingFood = false;
-				} 
+				}
 			}
 		}
 
@@ -182,32 +179,32 @@ namespace Aquarium
 
 		public void DrawImage(PaintEventArgs e)
 		{
-			Image hungryFish = Properties.Resources.fishHungry;
-			Image deadFish = Properties.Resources.fishDead;
+			Image hungryShark = Properties.Resources.sharkHungry;
+			Image deadShark = Properties.Resources.sharkDead;
 
-			//Dead Fish...
+			//Dead Shark...
 			if (hunger == 0)
 			{
-				e.Graphics.DrawImage(deadFish, GetDrawPoints(target.X > position.X));
+				e.Graphics.DrawImage(deadShark, GetDrawPoints(target.X > position.X));
 			}
 
-			//Hungry Fish : 750 = 15 secs until death
+			//Hungry Shark : 750 = 15 secs until death
 			else if (hunger < 750 && hunger > 0)
 			{
-				e.Graphics.DrawImage(hungryFish, GetDrawPoints(target.X > position.X));
+				e.Graphics.DrawImage(hungryShark, GetDrawPoints(target.X > position.X));
 			}
-			
-			//Normal Fish
+
+			//Normal Shark
 			else
 			{
-				e.Graphics.DrawImage(fishImage, GetDrawPoints(target.X > position.X));
+				e.Graphics.DrawImage(sharkImage, GetDrawPoints(target.X > position.X));
 			}
 		}
 
 		private PointF[] GetDrawPoints(bool isFlipped)
 		{
-			float fishImageWidth = fishImage.Width * drawScale;
-			float fishImageHeight = fishImage.Height * drawScale;
+			float fishImageWidth = sharkImage.Width * drawScale;
+			float fishImageHeight = sharkImage.Height * drawScale;
 
 			PointF[] drawPoints = new PointF[3];
 

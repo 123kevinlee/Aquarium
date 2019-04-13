@@ -20,6 +20,7 @@ namespace Aquarium
 
 		private Fish[] school = new Fish[0];
 		private Food[] foodies = new Food[0];
+		private Shark[] sharks = new Shark[0];
 		#region MakeDraggable
 		private bool mouseDown;
 		private Point lastLocation;
@@ -89,6 +90,11 @@ namespace Aquarium
 				school[i].DrawImage(e);
 			}
 
+			for (int i = 0; i < sharks.Length; i++)
+			{
+				sharks[i].DrawImage(e);
+
+			}
 			for (int i = 0; i < foodies.Length; i++)
 			{
 				foodies[i].Draw(e);
@@ -130,11 +136,11 @@ namespace Aquarium
 			for (int i = 0; i < school.Length; i++)
 			{
 				school[i].Update();
-				if (school[i].hunger == 0 && school[i].GetPosition.Y == namePanelBottom)
+				avgHunger += school[i].hunger;
+				if ((school[i].hunger == 0 && school[i].GetPosition.Y == namePanelBottom) || school[i].eatingByShark == true)
 				{
 					RemoveFish(i);
 				}
-				avgHunger += school[i].hunger;
 				Invalidate();
 			}
 
@@ -150,7 +156,16 @@ namespace Aquarium
 				avgHunger = Math.Round(avgHunger);
 				this.hunger_label.Text = $"Average Hunger: {avgHunger}%";
 			}
-			
+
+			for (int i = 0; i < sharks.Length; i++)
+			{
+				sharks[i].Update();
+				if (sharks[i].hunger == 0 && sharks[i].GetPosition.Y == namePanelBottom)
+				{
+					RemoveShark(i);
+				}
+				Invalidate();
+			}
 			for (int i = 0; i < foodies.Length; i++)
 			{
 				foodies[i].Update();
@@ -162,6 +177,11 @@ namespace Aquarium
 		{
 			AddFish(new Fish(new PointF(15, titleLabel.Bottom + 5), this, 4F, (float)1.4, Properties.Resources.fishOrange1));
 			fishNumber_Label.Text = $"Fishes: {school.Length}";
+		}
+
+		private void addShark_button_Click(object sender, EventArgs e)
+		{
+			AddShark(new Shark(new PointF(15, titleLabel.Bottom + 5), this, 5F, (float)1.4, Properties.Resources.shark));
 		}
 
 		private void feed_Button_Click(object sender, EventArgs e)
@@ -217,6 +237,25 @@ namespace Aquarium
 			y = temp;
 		}
 
+		public void AddShark(Shark shark)
+		{
+			Array.Resize(ref sharks, sharks.Length + 1);
+			sharks[sharks.Length - 1] = shark;
+		}
+
+		public void RemoveShark(int index)
+		{
+			SharkSwap(ref sharks[index], ref sharks[sharks.Length - 1]);
+			Array.Resize(ref sharks, sharks.Length - 1);
+		}
+
+		public void SharkSwap(ref Shark x, ref Shark y)
+		{
+			var temp = x;
+			x = y;
+			y = temp;
+		}
+
 		public void AddFood(Food foodPiece)
 		{
 			Array.Resize(ref foodies, foodies.Length + 1);
@@ -257,6 +296,11 @@ namespace Aquarium
 		public Food[] foodArray
 		{
 			get { return foodies; }
+		}
+
+		public Fish[] fishArray
+		{
+			get { return school; }
 		}
 	}
 }

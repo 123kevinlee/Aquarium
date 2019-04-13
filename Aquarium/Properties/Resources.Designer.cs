@@ -93,6 +93,16 @@ namespace Aquarium.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap addShark {
+            get {
+                object obj = ResourceManager.GetObject("addShark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap fishDead {
             get {
                 object obj = ResourceManager.GetObject("fishDead", resourceCulture);
@@ -186,6 +196,36 @@ namespace Aquarium.Properties {
         internal static System.Drawing.Bitmap seaweed {
             get {
                 object obj = ResourceManager.GetObject("seaweed", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shark {
+            get {
+                object obj = ResourceManager.GetObject("shark", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sharkDead {
+            get {
+                object obj = ResourceManager.GetObject("sharkDead", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sharkHungry {
+            get {
+                object obj = ResourceManager.GetObject("sharkHungry", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
