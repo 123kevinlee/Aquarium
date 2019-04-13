@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Drawing.Imaging;
 
 namespace Aquarium
 {
@@ -30,11 +25,11 @@ namespace Aquarium
 
 		public Shark(PointF startPosition, Form1 parentForm, float speed, float drawScale, Image fishImage)
 		{
-			this.position = startPosition;
+			position = startPosition;
 			this.parentForm = parentForm;
 			this.speed = speed;
 			this.drawScale = drawScale;
-			this.sharkImage = fishImage;
+			sharkImage = fishImage;
 			target = position;
 		}
 

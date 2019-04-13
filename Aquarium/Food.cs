@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -41,7 +37,7 @@ namespace Aquarium
 			float deltaY = targetY - position.Y;
 			float deltaPos = Math.Min(speed, deltaY);
 
-			position.Y += (float)(deltaPos);
+			position.Y += deltaPos;
 		}
 
 		public void Draw(PaintEventArgs e)
