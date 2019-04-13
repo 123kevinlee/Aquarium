@@ -4,4 +4,4 @@
 4. Fish tank visual improvements: Rocks and plants ✓
 5. GUI improvements: Buttons with images of fish&addsign and food&addsign ✓
 6. Curved Swimming ✓
-7. Different fish: Predator fish that eats the goldfish?
+7. Different fish: Predator fish that eats the goldfish? ✓
