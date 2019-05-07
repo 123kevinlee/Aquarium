@@ -15,7 +15,7 @@ namespace Aquarium
 		public FoodForm()
 		{
 			InitializeComponent();
-			this.BringToFront();
+			Application.EnableVisualStyles();
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Aquarium
@@ -138,19 +139,6 @@ namespace Aquarium
 				Invalidate();
 			}
 
-			if (avgHunger == 0)
-			{
-				this.hunger_label.Text = string.Empty;
-			}
-			else if (school.Length > 0)
-			{
-				avgHunger /= school.Length;
-				avgHunger /= school[0].maxHunger;
-				avgHunger *= 100;
-				avgHunger = Math.Round(avgHunger);
-				this.hunger_label.Text = $"Average Hunger: {avgHunger}%";
-			}
-
 			for (int i = 0; i < sharks.Length; i++)
 			{
 				sharks[i].Update();
@@ -209,8 +197,17 @@ namespace Aquarium
 			//FoodForm.BringToFront();
 			//FoodForm.Top = 0;
 			//FoodForm.Left = feed_Button.Right;
+			  //Thread NewForm = new Thread(new ThreadStart(CreateFoodForm));
+			//NewForm.Start();
 			#endregion
 		}
+
+		//public void CreateFoodForm()
+		//{
+		//	FoodForm foodForm = new FoodForm();
+		//	foodForm.Show();
+		//	Application.EnableVisualStyles();
+		//}
 
 		public void AddFish(Fish fish)
 		{
@@ -280,7 +277,7 @@ namespace Aquarium
 		//Minimize Button
 		private void pictureBox2_Click(object sender, EventArgs e)
 		{
-			this.WindowState = FormWindowState.Minimized;
+			//this.WindowState = FormWindowState.Minimized;
 		}
 
 		//Form get accessors

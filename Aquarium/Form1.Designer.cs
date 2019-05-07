@@ -29,28 +29,22 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
 			this.panel1 = new System.Windows.Forms.Panel();
-			this.hunger_label = new System.Windows.Forms.Label();
-			this.fishNumber_Label = new System.Windows.Forms.Label();
-			this.titleLabel = new System.Windows.Forms.Label();
-			this.timer1 = new System.Windows.Forms.Timer(this.components);
-			this.pictureBox2 = new System.Windows.Forms.PictureBox();
 			this.addShark_button = new System.Windows.Forms.Button();
+			this.fishNumber_Label = new System.Windows.Forms.Label();
 			this.feed_Button = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.createFish_Button = new System.Windows.Forms.Button();
+			this.titleLabel = new System.Windows.Forms.Label();
+			this.timer1 = new System.Windows.Forms.Timer(this.components);
 			this.panel1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// panel1
 			// 
 			this.panel1.BackColor = System.Drawing.Color.Navy;
-			this.panel1.Controls.Add(this.pictureBox2);
 			this.panel1.Controls.Add(this.addShark_button);
-			this.panel1.Controls.Add(this.hunger_label);
 			this.panel1.Controls.Add(this.fishNumber_Label);
 			this.panel1.Controls.Add(this.feed_Button);
 			this.panel1.Controls.Add(this.pictureBox1);
@@ -63,60 +57,6 @@
 			this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseDown);
 			this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseMove);
 			this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseUp);
-			// 
-			// hunger_label
-			// 
-			this.hunger_label.AutoSize = true;
-			this.hunger_label.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.hunger_label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.hunger_label.Location = new System.Drawing.Point(479, 8);
-			this.hunger_label.Name = "hunger_label";
-			this.hunger_label.Size = new System.Drawing.Size(192, 18);
-			this.hunger_label.TabIndex = 4;
-			this.hunger_label.Text = "Average Hunger: 100%";
-			// 
-			// fishNumber_Label
-			// 
-			this.fishNumber_Label.AutoSize = true;
-			this.fishNumber_Label.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.fishNumber_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-			this.fishNumber_Label.Location = new System.Drawing.Point(677, 8);
-			this.fishNumber_Label.Name = "fishNumber_Label";
-			this.fishNumber_Label.Size = new System.Drawing.Size(79, 18);
-			this.fishNumber_Label.TabIndex = 2;
-			this.fishNumber_Label.Text = "Fishes: 0";
-			this.fishNumber_Label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseDown);
-			this.fishNumber_Label.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseMove);
-			this.fishNumber_Label.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseUp);
-			// 
-			// titleLabel
-			// 
-			this.titleLabel.AutoSize = true;
-			this.titleLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.titleLabel.ForeColor = System.Drawing.Color.White;
-			this.titleLabel.Location = new System.Drawing.Point(6, 5);
-			this.titleLabel.Name = "titleLabel";
-			this.titleLabel.Size = new System.Drawing.Size(187, 24);
-			this.titleLabel.TabIndex = 0;
-			this.titleLabel.Text = "Magnus Piscinam";
-			this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseDown);
-			this.titleLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseMove);
-			this.titleLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseUp);
-			// 
-			// timer1
-			// 
-			this.timer1.Interval = 15;
-			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-			// 
-			// pictureBox2
-			// 
-			this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-			this.pictureBox2.Location = new System.Drawing.Point(770, 12);
-			this.pictureBox2.Name = "pictureBox2";
-			this.pictureBox2.Size = new System.Drawing.Size(20, 17);
-			this.pictureBox2.TabIndex = 6;
-			this.pictureBox2.TabStop = false;
-			this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
 			// 
 			// addShark_button
 			// 
@@ -132,6 +72,20 @@
 			this.addShark_button.TabIndex = 5;
 			this.addShark_button.UseVisualStyleBackColor = false;
 			this.addShark_button.Click += new System.EventHandler(this.addShark_button_Click);
+			// 
+			// fishNumber_Label
+			// 
+			this.fishNumber_Label.AutoSize = true;
+			this.fishNumber_Label.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.fishNumber_Label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+			this.fishNumber_Label.Location = new System.Drawing.Point(693, 9);
+			this.fishNumber_Label.Name = "fishNumber_Label";
+			this.fishNumber_Label.Size = new System.Drawing.Size(79, 18);
+			this.fishNumber_Label.TabIndex = 2;
+			this.fishNumber_Label.Text = "Fishes: 0";
+			this.fishNumber_Label.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseDown);
+			this.fishNumber_Label.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseMove);
+			this.fishNumber_Label.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseUp);
 			// 
 			// feed_Button
 			// 
@@ -173,6 +127,25 @@
 			this.createFish_Button.UseVisualStyleBackColor = false;
 			this.createFish_Button.Click += new System.EventHandler(this.createFish_Button_Click);
 			// 
+			// titleLabel
+			// 
+			this.titleLabel.AutoSize = true;
+			this.titleLabel.Font = new System.Drawing.Font("Arial Rounded MT Bold", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.titleLabel.ForeColor = System.Drawing.Color.White;
+			this.titleLabel.Location = new System.Drawing.Point(6, 5);
+			this.titleLabel.Name = "titleLabel";
+			this.titleLabel.Size = new System.Drawing.Size(187, 24);
+			this.titleLabel.TabIndex = 0;
+			this.titleLabel.Text = "Magnus Piscinam";
+			this.titleLabel.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseDown);
+			this.titleLabel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseMove);
+			this.titleLabel.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Draggable_MouseUp);
+			// 
+			// timer1
+			// 
+			this.timer1.Interval = 15;
+			this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,7 +162,6 @@
 			this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
 			this.ResumeLayout(false);
 
@@ -203,9 +175,7 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Button feed_Button;
 		private System.Windows.Forms.Label fishNumber_Label;
-		private System.Windows.Forms.Label hunger_label;
 		private System.Windows.Forms.Button addShark_button;
-		private System.Windows.Forms.PictureBox pictureBox2;
 	}
 }
 

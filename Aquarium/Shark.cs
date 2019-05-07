@@ -194,6 +194,14 @@ namespace Aquarium
 			{
 				e.Graphics.DrawImage(sharkImage, GetDrawPoints(target.X > position.X));
 			}
+			Font stringFont = new Font("Arial", 12);
+			SolidBrush drawBrush = new SolidBrush(Color.Black);
+			PointF hungerTextPosition = new PointF(position.X - 10, position.Y - 50);
+			double hungerPercent = hunger;
+			hungerPercent /= maxHunger;
+			hungerPercent *= 100;
+			hungerPercent = Math.Round(hungerPercent);
+			e.Graphics.DrawString(Convert.ToString(hungerPercent) + "%", stringFont, drawBrush, hungerTextPosition);
 		}
 
 		private PointF[] GetDrawPoints(bool isFlipped)
